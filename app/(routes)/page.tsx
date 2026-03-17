@@ -1,8 +1,10 @@
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
+import ChatInterface from "@/components/chat";
+
 
 export default function Home() {
   return (
-   <Button>Click me</Button>
+    <div>
+ <ChatInterface isHomepage={false} />
+    </div>
   );
 }
