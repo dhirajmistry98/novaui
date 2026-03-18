@@ -1,3 +1,5 @@
+"use client";
+
 import { generateSiteId } from '@/lib/utils';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
