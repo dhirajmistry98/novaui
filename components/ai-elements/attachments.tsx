@@ -9,14 +9,14 @@ import {
 import { cn } from "@/lib/utils";
 import type { FileUIPart, SourceDocumentUIPart } from "ai";
 import {
-  FileTextIcon,
-  GlobeIcon,
-  ImageIcon,
-  Music2Icon,
-  PaperclipIcon,
-  VideoIcon,
-  XIcon,
-} from "lucide-react";
+  FaFileAlt,
+  FaGlobe,
+  FaImage,
+  FaMusic,
+  FaPaperclip,
+  FaVideo,
+  FaTimes,
+} from "react-icons/fa";
 import type { ComponentProps, HTMLAttributes, ReactNode } from "react";
 import { createContext, useCallback, useContext, useMemo } from "react";
 
@@ -38,13 +38,13 @@ export type AttachmentMediaCategory =
 
 export type AttachmentVariant = "grid" | "inline" | "list";
 
-const mediaCategoryIcons: Record<AttachmentMediaCategory, typeof ImageIcon> = {
-  audio: Music2Icon,
-  document: FileTextIcon,
-  image: ImageIcon,
-  source: GlobeIcon,
-  unknown: PaperclipIcon,
-  video: VideoIcon,
+const mediaCategoryIcons: Record<AttachmentMediaCategory, typeof FaImage> = {
+  audio: FaMusic,
+  document: FaFileAlt,
+  image: FaImage,
+  source: FaGlobe,
+  unknown: FaPaperclip,
+  video: FaVideo,
 };
 
 // ============================================================================
@@ -242,7 +242,7 @@ export const AttachmentPreview = ({
 
   const iconSize = variant === "inline" ? "size-3" : "size-4";
 
-  const renderIcon = (Icon: typeof ImageIcon) => (
+  const renderIcon = (Icon: typeof FaImage) => (
     <Icon className={cn(iconSize, "text-muted-foreground")} />
   );
 
@@ -359,7 +359,7 @@ export const AttachmentRemove = ({
       variant="ghost"
       {...props}
     >
-      {children ?? <XIcon />}
+      {children ?? <FaTimes />}
       <span className="sr-only">{label}</span>
     </Button>
   );

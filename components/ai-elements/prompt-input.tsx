@@ -42,13 +42,13 @@ import {
 import { cn } from "@/lib/utils";
 import type { ChatStatus, FileUIPart, SourceDocumentUIPart } from "ai";
 import {
-  CornerDownLeftIcon,
-  ImageIcon,
-  Monitor,
-  PlusIcon,
-  SquareIcon,
-  XIcon,
-} from "lucide-react";
+  FaReply,
+  FaImage,
+  FaDesktop,
+  FaPlus,
+  FaSquare,
+  FaTimes,
+} from "react-icons/fa";
 import { nanoid } from "nanoid";
 import type {
   ChangeEvent,
@@ -430,7 +430,7 @@ export const PromptInputActionAddAttachments = ({
 
   return (
     <DropdownMenuItem {...props} onSelect={handleSelect}>
-      <ImageIcon className="mr-2 size-4" /> {label}
+      <FaImage className="mr-2 size-4" /> {label}
     </DropdownMenuItem>
   );
 };
@@ -475,7 +475,7 @@ export const PromptInputActionAddScreenshot = ({
 
   return (
     <DropdownMenuItem {...props} onSelect={handleSelect}>
-      <Monitor className="mr-2 size-4" />
+      <FaDesktop className="mr-2 size-4" />
       {label}
     </DropdownMenuItem>
   );
@@ -1180,7 +1180,7 @@ export const PromptInputActionMenuTrigger = ({
 }: PromptInputActionMenuTriggerProps) => (
   <DropdownMenuTrigger asChild>
     <PromptInputButton className={className} {...props}>
-      {children ?? <PlusIcon className="size-4" />}
+      {children ?? <FaPlus className="size-4" />}
     </PromptInputButton>
   </DropdownMenuTrigger>
 );
@@ -1225,14 +1225,14 @@ export const PromptInputSubmit = ({
 }: PromptInputSubmitProps) => {
   const isGenerating = status === "submitted" || status === "streaming";
 
-  let Icon = <CornerDownLeftIcon className="size-4" />;
+  let Icon = <FaReply className="size-4" />;
 
   if (status === "submitted") {
     Icon = <Spinner />;
   } else if (status === "streaming") {
-    Icon = <SquareIcon className="size-4" />;
+    Icon = <FaSquare className="size-4" />;
   } else if (status === "error") {
-    Icon = <XIcon className="size-4" />;
+    Icon = <FaTimes className="size-4" />;
   }
 
   const handleClick = useCallback(
