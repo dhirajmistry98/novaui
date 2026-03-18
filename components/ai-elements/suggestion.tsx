@@ -16,18 +16,15 @@ export const Suggestions = ({
   children,
   ...props
 }: SuggestionsProps) => {
-  const isWrap = className?.includes("flex-wrap")
- return (
-  <ScrollArea className="w-full overflow-x-auto whitespace-nowrap" {...props}>
-    <div className={cn("flex items-center gap-2",
-      !isWrap && " w-max flex-wrap",
-      className)}>
-      {children}
+  const isWrap = className?.includes("flex-wrap");
+  return (
+    <div className={cn("w-full", !isWrap && "overflow-x-auto whitespace-nowrap")}>
+      <div className={cn("flex items-center gap-2", !isWrap ? "w-max" : "flex-wrap", className)}>
+        {children}
+      </div>
     </div>
-    <ScrollBar className="hidden" orientation="horizontal" />
-  </ScrollArea>
-);
-}
+  );
+};
 
 export type SuggestionProps = Omit<ComponentProps<typeof Button>, "onClick"> & {
   suggestion: string;
@@ -53,7 +50,7 @@ export const Suggestion = ({
       onClick={handleClick}
       size={size}
       type="button"
-      variant={variant}
+      variant="ghost"
       {...props}
     >
       {children || suggestion}
